@@ -41,7 +41,7 @@ namespace WebToDo21.DAL
 
         public static int CreateNewCard(TodoCard tdCard)
         {
-            string query = @"insert into todo.TodoCard values(@userId, @title, @content)
+            string query = @"insert into todo.TodoCard(userId, title, content) values(@userId, @title, @content)
                             select cast(scope_identity() as int)";
 
             using (SqlConnection conn = new SqlConnection(Connection.CnnMyTodoDb))
