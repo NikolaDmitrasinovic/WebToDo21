@@ -93,6 +93,29 @@ namespace WebToDo21.DAL
             }
         }
 
+        public static int UpdateCardStatus(TodoCard tdCard) //used to set ToDo card as done
+        {
+            string query = @"update todo.TodoCard set cardStatus=1
+                            where CardId = @id";
+            
+            using(SqlConnection conn = new SqlConnection(Connection.CnnMyTodoDb))
+            {
+                using (SqlCommand comm = new SqlCommand(query, conn))
+                {
+                    try
+                    {
+                        comm.Parameters.AddWithValue("@id", tdCard.CardId);
+                        conn.Open();
+                        return comm.ExecuteNonQuery();
+                    }
+                    catch (System.Exception)
+                    {
+                        return -1;
+                    }
+                }
+            }
+        }
+
         public static int DeleteCard(TodoCard tdCard)
         {
             string query = "delete todo.TodoCard where CardId=@id";

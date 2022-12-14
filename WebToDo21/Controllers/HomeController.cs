@@ -30,6 +30,11 @@ namespace WebToDo21.Controllers
             TodoCard tCard = new TodoCard{CardId=cardId, Title=title, Content=content};
             return Json(TodoCardDal.UpdateCard(tCard));
         }
+        public int UpdateCardStatus(int id)
+        {
+            TodoCard tCard = new TodoCard{CardId=id};
+            return TodoCardDal.UpdateCardStatus(tCard);
+        }
         public int DeleteCard(int id)
         {
             TodoCard tCard = new TodoCard{CardId=id};
