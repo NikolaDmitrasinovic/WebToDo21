@@ -25,7 +25,8 @@ namespace WebToDo21.DAL
                                 CardId = dr.GetInt32(0),
                                 UserId = dr.GetInt32(1),
                                 Title = dr.GetString(2),
-                                Content = dr[3].ToString()
+                                Content = dr[3].ToString(),
+                                CardStatus = dr.GetBoolean(4)
                             };
                             cardList.Add(tdObj);
                         }
