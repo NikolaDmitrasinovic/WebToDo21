@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebToDo21.Models;
+using WebToDo21.DAL;
 
 namespace WebToDo21.Controllers
 {
@@ -13,6 +14,11 @@ namespace WebToDo21.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        public JsonResult ReturnAllCards()
+        {
+            return Json(TodoCardDal.ReturnCards());
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
