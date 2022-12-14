@@ -20,6 +20,11 @@ namespace WebToDo21.Controllers
         {
             return Json(TodoCardDal.ReturnCards());
         }
+        public JsonResult CreateNewCard(int userId, string title, string content)
+        {
+            TodoCard tCard = new TodoCard{UserId =userId, Title=title, Content=content};
+            return Json(TodoCardDal.CreateNewCard(tCard));
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
