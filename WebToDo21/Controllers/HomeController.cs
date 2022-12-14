@@ -25,6 +25,11 @@ namespace WebToDo21.Controllers
             TodoCard tCard = new TodoCard{UserId =userId, Title=title, Content=content};
             return Json(TodoCardDal.CreateNewCard(tCard));
         }
+        public JsonResult UpdateCard(int cardId, string title, string content) //potential problem when specific user involved => future HOMER problem
+        {
+            TodoCard tCard = new TodoCard{CardId=cardId, Title=title, Content=content};
+            return Json(TodoCardDal.UpdateCard(tCard));
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
