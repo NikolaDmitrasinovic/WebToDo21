@@ -87,5 +87,27 @@ namespace WebToDo21.DAL
                 }
             }
         }
+
+        public static int DeleteUser(TodoUser tdUser)
+        {
+            string query = "delete users.todoUser where userId=@id";
+
+            using (SqlConnection conn = new SqlConnection(Connection.CnnMyTodoDb))
+            {
+                using (SqlCommand comm = new SqlCommand(query, conn))
+                {
+                    try
+                    {
+                        comm.Parameters.AddWithValue("@id", tdUser.UserId);
+                        conn.Open();
+                        return comm.ExecuteNonQuery();
+                    }
+                    catch (System.Exception)
+                    {
+                        return -1;
+                    }
+                }
+            }
+        }
     }
 }
