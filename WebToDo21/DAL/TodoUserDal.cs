@@ -37,5 +37,30 @@ namespace WebToDo21.DAL
                 }
             }
         }
+
+        public static int CreateUser(TodoUser tdUser)
+        {
+            string query = @"insert into users.todoUser values(@userName, @userPassword, @userRole)
+                            select cast(scope_identity() as int)";
+
+            using (SqlConnection conn = new SqlConnection(Connection.CnnMyTodoDb))
+            {
+                using (SqlCommand comm = new SqlCommand(query, conn))
+                {
+                    try
+                    {
+                        comm.Parameters.AddWithValue("@userName", tdUser.UserName);
+                        comm.Parameters.AddWithValue("@userPassword", tdUser.UserPassword);
+                        comm.Parameters.AddWithValue("@userRole", tdUser.UserRole);
+                        conn.Open();
+                        return (int) comm.ExecuteScalar();
+                    }
+                    catch (System.Exception)
+                    {
+                        return -1;
+                    }
+                }
+            }
+        }
     }
 }
