@@ -15,5 +15,12 @@ namespace WebToDo21.Controllers
         {
             return Json(TodoUserDal.ReturnAllUsers());
         }
+
+        [HttpPost]
+        public int CreateUser(string userName, string userPassword, string userRole)
+        {
+            TodoUser tdUser = new TodoUser{UserName=userName, UserPassword=userPassword, UserRole=userRole};
+            return TodoUserDal.CreateUser(tdUser);
+        }
     }
 }
