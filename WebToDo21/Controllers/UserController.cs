@@ -22,5 +22,11 @@ namespace WebToDo21.Controllers
             TodoUser tdUser = new TodoUser{UserName=userName, UserPassword=userPassword, UserRole=userRole};
             return TodoUserDal.CreateUser(tdUser);
         }
+
+        public int ChangePassword(int userId, string userPassword, string userRole="creator")
+        {
+            TodoUser tdUser = new TodoUser{UserId=userId, UserPassword=userPassword, UserRole=userRole};
+            return TodoUserDal.UpdateUser(tdUser);
+        }
     }
 }
