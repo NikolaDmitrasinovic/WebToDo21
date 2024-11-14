@@ -1,0 +1,6 @@
+@MSAExampleMinimal_HostAddress = http://localhost:5015
+
+GET {{MSAExampleMinimal_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
