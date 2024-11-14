@@ -1,6 +1,9 @@
 var builder = WebApplication.CreateBuilder(args);
+
+// Add DI - AddService
+
 var app = builder.Build();
 
-app.MapGet("/", () => "Hello World!");
+// Configure pipeline - UseMethod...
 
 app.Run();
